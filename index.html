@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Develeap - The Demo is in 90 Minutes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/slack.css?v=4u">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+</head>
+<body>
+
+<!-- DESKTOP BACKGROUND (visible behind Slack window) -->
+<div id="desktop-bg">
+  <div class="dwm">Develeap</div>
+  <div class="fake-browser">
+    <div class="fb-titlebar">
+      <span class="fb-traffic">
+        <span class="tl-btn close"></span>
+        <span class="tl-btn min"></span>
+        <span class="tl-btn max"></span>
+      </span>
+      <span class="fb-nav">← → ↻</span>
+    </div>
+    <div class="fb-tabs">
+      <div class="fb-tab active">
+        <span class="fb-tab-fav">📚</span>
+        <span class="fb-tab-title">How to recover deleted terraform.tfstate (urgent)</span>
+        <span class="fb-tab-x">×</span>
+      </div>
+      <div class="fb-tab">
+        <span class="fb-tab-fav">📝</span>
+        <span class="fb-tab-title">FastShip onboarding doc - Notion (last edit: 4 mo ago)</span>
+        <span class="fb-tab-x">×</span>
+      </div>
+      <div class="fb-tab">
+        <span class="fb-tab-fav">🤖</span>
+        <span class="fb-tab-title">are dogs allowed on slack reddit</span>
+        <span class="fb-tab-x">×</span>
+      </div>
+      <div class="fb-tab">
+        <span class="fb-tab-fav">💸</span>
+        <span class="fb-tab-title">AWS Cost Explorer - account[FastShip-prod]</span>
+        <span class="fb-tab-x">×</span>
+      </div>
+      <div class="fb-tab">
+        <span class="fb-tab-fav">📅</span>
+        <span class="fb-tab-title">Brainspace Calendar (4 conflicts today)</span>
+        <span class="fb-tab-x">×</span>
+      </div>
+      <div class="fb-tab">
+        <span class="fb-tab-fav">📨</span>
+        <span class="fb-tab-title">Gmail (3 unread, 2 from your manager)</span>
+        <span class="fb-tab-x">×</span>
+      </div>
+    </div>
+    <div class="fb-address">
+      <span class="fb-lock">🔒</span>
+      <span>stackoverflow.com/questions/47281019/how-do-i-recover-a-deleted-terraform-state-file</span>
+    </div>
+  </div>
+</div>
+
+<!-- DOCK -->
+<div id="dock">
+  <div class="dock-icon" title="Files">📁</div>
+  <div class="dock-icon" title="Browser">🌐</div>
+  <div class="dock-icon active" title="Slack">💬</div>
+  <div class="dock-icon" title="Calendar">📅</div>
+  <div class="dock-icon" title="Mail">📧</div>
+  <div class="dock-icon" title="Docker">🐳</div>
+  <div class="dock-icon" title="Terminal">⌨️</div>
+  <div class="dock-icon" title="Notion">📝</div>
+</div>
+
+<!-- INTRO SCREEN -->
+<div id="intro-screen">
+  <!-- Logo: drop a develeap-logo.png into game/ to make it appear here.
+       If the file doesn't exist, nothing renders — no wordmark fallback. -->
+  <div class="intro-logo-wrap">
+    <img class="intro-logo-img" src="develeap-logo.png" alt=""
+         onerror="this.style.display='none';">
+  </div>
+  <div class="intro-meta">A Develeap mini-game</div>
+  <div class="intro-title">Production is down.<br>CEO Demo Is In 90 Minutes.</div>
+  <div class="intro-subtitle">Thursday afternoon at brainspace offices…</div>
+  <div class="intro-comic">All characters are a work of fiction. Or are they?</div>
+  <button class="intro-start-btn" onclick="startGame()">Start →</button>
+</div>
+
+<!-- NOTIFICATION TOAST -->
+<div id="notif"></div>
+
+<!-- SLACK WINDOW (the actual game UI lives inside this) -->
+<div id="slack-window">
+
+  <!-- macOS-style window titlebar -->
+  <div id="slack-titlebar">
+    <span class="tl-buttons">
+      <span class="tl-btn close" title="Close (decorative)"></span>
+      <span class="tl-btn min" onclick="minimizeSlack()" title="Minimize"></span>
+      <span class="tl-btn max" title="Zoom (decorative)"></span>
+    </span>
+    <span class="tl-title">develeap - Slack</span>
+  </div>
+
+  <!-- WORKSPACE HEADER -->
+  <div id="header" style="display:none">
+    <div id="header-back" onclick="goBackToIntro()">←</div>
+    <div id="header-workspace">
+      <img class="header-logo-img" src="develeap-logo.png" alt=""
+           onerror="this.style.display='none';">
+      <span>Develeap</span>
+    </div>
+    <div id="header-search">🔍 Search Develeap</div>
+    <div id="header-user">
+      <div class="header-user-avatar">★</div>
+      <span>you</span>
+    </div>
+  </div>
+
+  <!-- STATUS BANNER: live incident status + countdown + severity + customer. -->
+  <div id="status-banner" class="sb-investigating" style="display:none">
+    <span class="sb-status">
+      <span class="sb-dot"></span>
+      <span class="sb-status-text">Investigating</span>
+    </span>
+    <span class="sb-divider">|</span>
+    <span class="sb-countdown">Demo in <span id="sb-time">7m</span></span>
+    <span class="sb-divider">|</span>
+    <span class="sb-severity">P0</span>
+    <span class="sb-customer">@FastShip</span>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div id="main">
+
+    <!-- CHANNELS SIDEBAR (rebuilt by js/channels.js renderChannelsSidebar) -->
+    <div id="channels-sidebar"></div>
+
+    <!-- CHAT COLUMN -->
+    <div id="chat-col">
+      <div id="channel-header">
+        <span id="ch-name"># fastship-prod</span>
+        <span id="ch-star">☆</span>
+        <div id="ch-members">👥 6</div>
+      </div>
+      <!-- chat-messages now wraps multiple per-channel panes; only the active one is visible -->
+      <div id="chat-messages"></div>
+      <div id="typing-area">
+        <div class="typing-pill">
+          <div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div>
+        </div>
+        <div id="typing-name"></div>
+      </div>
+      <div id="compose-area">
+        <div id="choice-area">
+          <div id="choice-hint">Your turn. Pick a response:</div>
+          <div id="choices-list"></div>
+        </div>
+        <div id="fake-input">
+          <span id="fake-input-placeholder" style="margin-left:8px">Message #fastship-prod</span>
+          <div class="compose-icons">@ &nbsp; 😊 &nbsp; ➤</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT RAIL: incident details, Slack-native style. -->
+    <div id="right-rail">
+
+      <div class="rail-section">
+        <div class="rail-section-title">About this incident</div>
+        <div class="rail-meta">
+          <div class="rail-row"><span class="rail-key">Severity</span><span class="rail-val sev-p0">P0</span></div>
+          <div class="rail-row"><span class="rail-key">Status</span>
+            <span class="rail-val rail-status sb-investigating">
+              <span class="sb-dot"></span>
+              <span class="rail-status-label">Investigating</span>
+            </span>
+          </div>
+          <div class="rail-row"><span class="rail-key">Started</span><span class="rail-val">17:23</span></div>
+          <div class="rail-row"><span class="rail-key">Customer</span><span class="rail-val">FastShip</span></div>
+          <div class="rail-row"><span class="rail-key">On-call</span><span class="rail-val">@you</span></div>
+        </div>
+      </div>
+
+      <div class="rail-section">
+        <div class="rail-section-title">People involved</div>
+        <div id="nb-list"></div>
+      </div>
+
+      <div class="rail-section">
+        <div class="rail-section-title">Pinned</div>
+        <div class="rail-pinned">
+          <div class="rail-pin">📎 deploy.log <span class="rail-pin-meta">Inbar · yesterday 23:14</span></div>
+          <div class="rail-pin">📄 runbook.md <span class="rail-pin-meta">Aviv · page 7</span></div>
+          <div class="rail-pin">🎯 Demo deck <span class="rail-pin-meta">Keren · today</span></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div><!-- /#slack-window -->
+
+<!-- END SCREEN: LinkedIn-style recap post -->
+<div id="end-screen">
+  <div id="end-card">
+
+    <!-- Badge celebration callout -->
+    <div id="end-badge">
+      <span class="badge-icon" id="badge-icon">🏆</span>
+      <span class="badge-info">You earned: <span class="badge-label" id="badge-label">DevOps Diplomat</span></span>
+    </div>
+
+    <!-- LinkedIn-style post -->
+    <div class="li-post">
+      <div class="li-author">
+        <div class="li-avatar">★</div>
+        <div class="li-author-info">
+          <div class="li-name">you <span class="li-degree">· 1st</span></div>
+          <div class="li-headline">Senior DevOps consultant @ Develeap</div>
+          <div class="li-meta">just now · 🌐</div>
+        </div>
+        <button class="li-follow">+ Follow</button>
+      </div>
+      <div class="li-body">
+        <div id="end-headline" class="li-post-headline"></div>
+        <div id="end-sub" class="li-post-text"></div>
+        <div class="li-hashtags" id="li-hashtags">#DevOps #IncidentResponse #Develeap #Mentorship</div>
+      </div>
+      <div class="li-engagement">
+        <span class="li-reactions">
+          <span class="li-react li-react-1">👏</span><span class="li-react li-react-2">❤️</span><span class="li-react li-react-3">💡</span>
+          <span class="li-react-count" id="li-react-count">47 reactions</span>
+        </span>
+        <span class="li-stats" id="li-stats"><span id="li-comment-count">3</span> comments · 12 reposts</span>
+      </div>
+      <div class="li-actions">
+        <button class="li-action-btn"><span class="li-icn">👍</span> Like</button>
+        <button class="li-action-btn"><span class="li-icn">💬</span> Comment</button>
+        <button class="li-action-btn"><span class="li-icn">🔁</span> Repost</button>
+        <button class="li-action-btn"><span class="li-icn">📤</span> Send</button>
+      </div>
+      <div class="li-comments" id="li-comments"></div>
+    </div>
+
+    <div id="reveal-area"></div>
+
+    <div id="end-btns">
+      <button class="end-btn" onclick="browseSlackAfterEnd()">📂 לחזור ולסייר ב-Slack</button>
+      <button class="end-btn primary" onclick="replayEpisode()">Replay 🔄</button>
+      <button class="end-btn" onclick="showEpisodeSelect()">Back to start</button>
+    </div>
+  </div>
+</div>
+
+<!-- Floating "back to result" pill, visible only while end-screen is hidden via browseSlackAfterEnd -->
+<button id="reopen-end-pill" onclick="reopenEndScreen()" style="display:none">חזרה לתוצאה →</button>
+
+<!-- Data files -->
+<script src="characters.js?v=4u"></script>
+<script src="episodes/episode-1.js?v=4u"></script>
+
+<!-- Engine modules (order matters: state → audio → channels → ui → engine → easter-eggs → reveal) -->
+<script src="js/state.js?v=4u"></script>
+<script src="js/audio.js?v=4u"></script>
+<script src="js/channels.js?v=4u"></script>
+<script src="js/ui.js?v=4u"></script>
+<script src="js/engine.js?v=4u"></script>
+<script src="js/easter-eggs.js?v=4u"></script>
+<script src="js/reveal.js?v=4u"></script>
+
+<script>
+"use strict";
+
+// ─── EPISODES REGISTRY ────────────────────────────────────────
+const EPISODES = [EPISODE_1];
+
+// ─── INIT ──────────────────────────────────────────────────────
+initChannels();
+renderSidebar(null, {});
+
+// Start handler from intro button
+function startGame() {
+  // Allow audio to start (browsers require user gesture)
+  GameAudio.beep(660, 0.05);
+  document.getElementById('intro-screen').classList.add('hidden');
+  setTimeout(() => {
+    document.getElementById('intro-screen').style.display = 'none';
+    document.getElementById('header').style.display = 'flex';
+    document.getElementById('status-banner').style.display = 'flex';
+    document.getElementById('main').style.display = 'flex';
+    loadEpisode(EPISODE_1);
+  }, 500);
+}
+
+// Back-to-intro from header
+function goBackToIntro() {
+  document.getElementById('main').style.display = 'none';
+  document.getElementById('header').style.display = 'none';
+  document.getElementById('status-banner').style.display = 'none';
+  document.getElementById('intro-screen').style.display = 'flex';
+  document.getElementById('intro-screen').classList.remove('hidden');
+}
+
+// Decorative minimize gimmick for the Slack window
+function minimizeSlack() {
+  const w = document.getElementById('slack-window');
+  if (!w) return;
+  w.classList.add('minimized');
+  setTimeout(() => w.classList.remove('minimized'), 1800);
+}
+
+</script>
+</body>
+</html>
