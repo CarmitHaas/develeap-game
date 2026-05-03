@@ -112,6 +112,9 @@ function switchToChannel(id, opts) {
   requestAnimationFrame(() => {
     if (newPane) newPane.scrollTop = newPane.scrollHeight;
   });
+
+  // Auto-close mobile drawer after picking a channel (no-op on desktop)
+  if (typeof closeMobileSidebar === 'function') closeMobileSidebar();
 }
 
 function createPane(channelId) {

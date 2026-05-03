@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/slack.css?v=4z">
+<link rel="stylesheet" href="css/slack.css?v=4za">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -116,6 +116,7 @@
   <!-- WORKSPACE HEADER -->
   <div id="header" style="display:none">
     <div id="header-back" onclick="goBackToIntro()">←</div>
+    <button id="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="Channels">☰</button>
     <div id="header-workspace">
       <img class="header-logo-img" src="develeap-logo.png" alt=""
            onerror="this.style.display='none';">
@@ -143,6 +144,9 @@
 
   <!-- MAIN AREA -->
   <div id="main">
+
+    <!-- Mobile drawer backdrop (only visible when sidebar is open on phones) -->
+    <div id="mobile-backdrop" onclick="toggleMobileSidebar()"></div>
 
     <!-- CHANNELS SIDEBAR (rebuilt by js/channels.js renderChannelsSidebar) -->
     <div id="channels-sidebar"></div>
@@ -277,17 +281,17 @@
 <button id="reopen-end-pill" onclick="reopenEndScreen()" style="display:none">חזרה לתוצאה →</button>
 
 <!-- Data files -->
-<script src="characters.js?v=4z"></script>
-<script src="episodes/episode-1.js?v=4z"></script>
+<script src="characters.js?v=4za"></script>
+<script src="episodes/episode-1.js?v=4za"></script>
 
 <!-- Engine modules (order matters: state → audio → channels → ui → engine → easter-eggs → reveal) -->
-<script src="js/state.js?v=4z"></script>
-<script src="js/audio.js?v=4z"></script>
-<script src="js/channels.js?v=4z"></script>
-<script src="js/ui.js?v=4z"></script>
-<script src="js/engine.js?v=4z"></script>
-<script src="js/easter-eggs.js?v=4z"></script>
-<script src="js/reveal.js?v=4z"></script>
+<script src="js/state.js?v=4za"></script>
+<script src="js/audio.js?v=4za"></script>
+<script src="js/channels.js?v=4za"></script>
+<script src="js/ui.js?v=4za"></script>
+<script src="js/engine.js?v=4za"></script>
+<script src="js/easter-eggs.js?v=4za"></script>
+<script src="js/reveal.js?v=4za"></script>
 
 <script>
 "use strict";
@@ -328,6 +332,21 @@ function minimizeSlack() {
   if (!w) return;
   w.classList.add('minimized');
   setTimeout(() => w.classList.remove('minimized'), 1800);
+}
+
+// Mobile channels drawer
+function toggleMobileSidebar() {
+  const sb = document.getElementById('channels-sidebar');
+  const bd = document.getElementById('mobile-backdrop');
+  if (!sb || !bd) return;
+  const open = sb.classList.toggle('mobile-open');
+  bd.classList.toggle('on', open);
+}
+function closeMobileSidebar() {
+  const sb = document.getElementById('channels-sidebar');
+  const bd = document.getElementById('mobile-backdrop');
+  if (sb) sb.classList.remove('mobile-open');
+  if (bd) bd.classList.remove('on');
 }
 
 </script>
