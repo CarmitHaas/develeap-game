@@ -107,3 +107,32 @@ function renderReveal(endingKey, revealsCode) {
     </div>
   `;
 }
+
+// Side CTA: a compact sticky panel (right rail on desktop, bottom bar on mobile)
+// that keeps the form link visible while the player reads the LinkedIn recap.
+// True ending: shows the code chip too. Other endings: just a "share which
+// ending you reached" submit button.
+function renderEndCTA(endingKey, revealsCode) {
+  const formReady = !FORM_PREFILL_URL_TEMPLATE.includes('REPLACE_FORM_ID');
+  const formUrl   = getFormUrl(endingKey, !!revealsCode);
+
+  const formBtn = formReady
+    ? `<a href="${formUrl}" target="_blank" rel="noopener" class="end-cta-btn">${revealsCode ? 'שלחו את הקוד →' : 'שתפו לאיזה סוף הגעתם →'}</a>`
+    : `<span class="end-cta-btn" style="opacity:0.6;cursor:default;">(קישור הטופס יוגדר בקרוב)</span>`;
+
+  if (revealsCode) {
+    const code = _decodeCode();
+    return `
+      <div class="end-cta-title" dir="rtl">🏆 הגעתם לסוף הנכון</div>
+      <div class="end-cta-code" id="end-cta-code-text">${code}</div>
+      <div class="end-cta-row">
+        <button class="end-cta-btn end-cta-btn-ghost" onclick="copyCodeToClipboard()">📋 העתקה</button>
+      </div>
+      <div class="end-cta-row">${formBtn}</div>
+    `;
+  }
+  return `
+    <div class="end-cta-title" dir="rtl">📨 רוצים שנדע איך זה הסתיים?</div>
+    <div class="end-cta-row">${formBtn}</div>
+  `;
+}

@@ -605,7 +605,7 @@ const YARDEN_BONUS = {
   color: "#0e7490",
   avatar: "Y",
   when: "Today · just now",
-  text: "🙏 ענקית תודה ל-@you שעזרו לי עם ה-CI של bootcamp-23 היום באמצע יום מטורף. השיעור מחר בבוקר רץ. אנשים גדולים.",
+  text: "🙏 תודה ענקית ל-@you שעזרו לי עם ה-CI של bootcamp-23 היום באמצע יום מטורף. השיעור מחר בבוקר רץ. אנשים גדולים.",
   reactions: [
     { emoji: "🙏", count: 9 },
     { emoji: "❤️", count: 6 }

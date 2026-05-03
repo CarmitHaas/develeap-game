@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/slack.css?v=4za">
+<link rel="stylesheet" href="css/slack.css?v=4zb">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -118,9 +118,8 @@
     <div id="header-back" onclick="goBackToIntro()">←</div>
     <button id="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="Channels">☰</button>
     <div id="header-workspace">
-      <img class="header-logo-img" src="develeap-logo.png" alt=""
-           onerror="this.style.display='none';">
-      <span>Develeap</span>
+      <img class="header-logo-img" src="develeap-logo.png" alt="Develeap"
+           onerror="this.parentElement.textContent='Develeap';">
     </div>
     <div id="header-search">🔍 Search Develeap</div>
     <div id="header-user">
@@ -219,6 +218,9 @@
 
 <!-- END SCREEN: LinkedIn-style recap post -->
 <div id="end-screen">
+  <!-- Side CTA: sticky form-link panel that travels with the player while
+       they read the recap. Desktop = right-side rail; mobile = bottom bar. -->
+  <aside id="end-cta-aside" aria-label="Submit form"></aside>
   <div id="end-card">
 
     <!-- Badge celebration callout -->
@@ -281,17 +283,17 @@
 <button id="reopen-end-pill" onclick="reopenEndScreen()" style="display:none">חזרה לתוצאה →</button>
 
 <!-- Data files -->
-<script src="characters.js?v=4za"></script>
-<script src="episodes/episode-1.js?v=4za"></script>
+<script src="characters.js?v=4zb"></script>
+<script src="episodes/episode-1.js?v=4zb"></script>
 
 <!-- Engine modules (order matters: state → audio → channels → ui → engine → easter-eggs → reveal) -->
-<script src="js/state.js?v=4za"></script>
-<script src="js/audio.js?v=4za"></script>
-<script src="js/channels.js?v=4za"></script>
-<script src="js/ui.js?v=4za"></script>
-<script src="js/engine.js?v=4za"></script>
-<script src="js/easter-eggs.js?v=4za"></script>
-<script src="js/reveal.js?v=4za"></script>
+<script src="js/state.js?v=4zb"></script>
+<script src="js/audio.js?v=4zb"></script>
+<script src="js/channels.js?v=4zb"></script>
+<script src="js/ui.js?v=4zb"></script>
+<script src="js/engine.js?v=4zb"></script>
+<script src="js/easter-eggs.js?v=4zb"></script>
+<script src="js/reveal.js?v=4zb"></script>
 
 <script>
 "use strict";

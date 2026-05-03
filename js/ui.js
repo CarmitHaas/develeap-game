@@ -433,6 +433,14 @@ function showEnd(endingData, activeChars, scores, endingKey) {
     revealArea.style.display = 'none';
   }
 
+  // Side / sticky CTA — same form link, more visible. Travels with the player
+  // while they scroll the recap so the call-to-action can't be missed.
+  const ctaAside = document.getElementById('end-cta-aside');
+  if (ctaAside && typeof renderEndCTA === 'function') {
+    ctaAside.innerHTML = renderEndCTA(endingKey, !!endingData.revealsCode);
+    ctaAside.style.display = 'flex';
+  }
+
   document.getElementById('end-screen').classList.add('on');
   GameAudio.beep(660, 0.3);
 }
@@ -461,7 +469,7 @@ function npcEndComment(charId, score, endingKey) {
     },
     maya: {
       high: "אנחנו !! צוות !! 🔥🔥🔥 גאה בכולם. אני יוצאת לסופ\"ש.",
-      mid:  "בקושי. אני צריכה איזה קפה. או 4.",
+      mid:  "חיה בקושי. אני צריכה איזה קפה. או 4.",
       low:  "אני בעצם הולכת לעדכן את הLinkedIn שלי. תודה.",
       colossal: "אני שולחת את קורות החיים ל-Google בכנות. גם בינגו צריך לחשוב על זה.",
       absurd:   "Brian!!! אני אוהבת את Brian!!! הוא יותר מאורגן מ-Aviv!!!"
