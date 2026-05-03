@@ -422,19 +422,14 @@ function showEnd(endingData, activeChars, scores, endingKey) {
   const ccEl = document.getElementById('li-comment-count');
   if (ccEl) ccEl.textContent = sorted.length;
 
-  // Submit block: shown on every ending. True ending = code reveal + form.
-  // Others = "share which ending you got + notes" form invite (no code).
+  // Submit CTA: a single floating panel on the left side of the card. The
+  // LinkedIn post itself stays pure (no inline form copy) so it reads like a
+  // real post. The side panel carries the code (true ending) and form button.
   const revealArea = document.getElementById('reveal-area');
-  if (typeof renderReveal === 'function') {
-    revealArea.innerHTML = renderReveal(endingKey, !!endingData.revealsCode);
-    revealArea.style.display = 'block';
-  } else {
+  if (revealArea) {
     revealArea.innerHTML = '';
     revealArea.style.display = 'none';
   }
-
-  // Side / sticky CTA — same form link, more visible. Travels with the player
-  // while they scroll the recap so the call-to-action can't be missed.
   const ctaAside = document.getElementById('end-cta-aside');
   if (ctaAside && typeof renderEndCTA === 'function') {
     ctaAside.innerHTML = renderEndCTA(endingKey, !!endingData.revealsCode);
