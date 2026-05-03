@@ -284,13 +284,18 @@ button { font-family: inherit; cursor: pointer; }
 @keyframes fadeOut { to { opacity: 0; pointer-events: none; } }
 
 .intro-eyebrow {
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 3px;
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #f1c40f;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  margin-bottom: 6px;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55), 0 0 32px rgba(241,196,15,0.25);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+@media (max-height: 820px) { .intro-eyebrow { font-size: 44px; } }
+@media (max-width: 560px) {
+  .intro-eyebrow { font-size: 30px; letter-spacing: 1.5px; margin-bottom: 8px; }
 }
 .intro-hero-wrap {
   display: flex;
@@ -363,7 +368,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 560px) {
   .intro-title { font-size: 24px; }
-  .intro-eyebrow { font-size: 12px; letter-spacing: 2px; }
 }
 .intro-subtitle {
   font-size: 16px;

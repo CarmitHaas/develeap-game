@@ -834,7 +834,7 @@ const EPISODE_1 = {
     // ═════════════════════════════════════════════════════════════
     {
       id: "beat_outcome",
-      endingFn: ({ paths, scores }) => {
+      endingFn: ({ paths }) => {
         // 5 distinct ending tones, in priority order. Triggers loosened so
         // "fun failures" (absurd / colossal) are easy to reach. ok_ending is
         // now the narrow middle slice, not the default catch-all.
@@ -850,10 +850,10 @@ const EPISODE_1 = {
         ];
         if (trueChecks.every(Boolean)) return 'true_ending';
 
-        // ── ABSURD ending: any meaningful Bingo commitment ──
-        // Loosened: toasting Bingo at the end + (high score OR dog_friend path) fires.
-        if (paths.final_action === 'bingo_celebration' &&
-            ((scores.bingo || 0) >= 70 || paths.bingo_path === 'dog_friend')) {
+        // ── ABSURD ending: pick "toast Bingo" as the final action and it fires.
+        // The dog ending is meant to feel like an explicit declaration; if the
+        // player picks it at the end, that's the answer.
+        if (paths.final_action === 'bingo_celebration') {
           return 'absurd_ending';
         }
 

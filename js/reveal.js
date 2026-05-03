@@ -21,10 +21,14 @@
 // To change the code: btoa('YOUR-NEW-CODE') in browser console, paste here.
 const _CODE_B64 = 'REVWRUxFQVAtVEhVUi1QUk9ELTdLM00='; // → DEVELEAP-THUR-PROD-7K3M
 
-// Set this once the Google Form exists. Use {CODE} and {ENDING} placeholders
-// where the entry values should land. Example:
-//   https://docs.google.com/forms/d/e/FORM_ID/viewform?usp=pp_url&entry.111={CODE}&entry.222={ENDING}
-const FORM_PREFILL_URL_TEMPLATE = 'https://docs.google.com/forms/d/e/REPLACE_FORM_ID/viewform?usp=pp_url&entry.REPLACE_CODE_ID={CODE}&entry.REPLACE_ENDING_ID={ENDING}';
+// Live form: https://forms.gle/zvtDrjmBnCPKyRQi9
+// To enable code/ending PREFILL (so the player just clicks submit), grab the
+// pre-filled URL from the form (3-dot menu → Get pre-filled link, fill the
+// code + ending fields with the literal strings PLACEHOLDER_CODE and
+// PLACEHOLDER_ENDING, then "Get link"). Replace those literals with {CODE}
+// and {ENDING} below. Without that, the form still opens but the player
+// types the code manually.
+const FORM_PREFILL_URL_TEMPLATE = 'https://forms.gle/zvtDrjmBnCPKyRQi9';
 
 // Friendly ending names that go into the form's "Which ending" field.
 const ENDING_LABELS = {
