@@ -275,13 +275,33 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 18px;
-  padding: 20px;
+  gap: 12px;
+  padding: 24px 20px;
   color: #fff;
+  overflow-y: auto;
 }
 #intro-screen.hidden { animation: fadeOut 0.5s ease forwards; }
 @keyframes fadeOut { to { opacity: 0; pointer-events: none; } }
 
+.intro-hero-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+  width: 100%;
+}
+.intro-hero-img {
+  max-height: 240px;
+  max-width: min(560px, 88vw);
+  width: auto;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+  display: block;
+}
+@media (max-height: 720px) {
+  .intro-hero-img { max-height: 180px; }
+}
 .intro-logo-wrap {
   display: flex;
   align-items: center;
@@ -289,11 +309,15 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 4px;
 }
 .intro-logo-img {
-  max-height: 72px;
-  max-width: 280px;
+  max-height: 80px;
+  max-width: 260px;
   width: auto;
   height: auto;
-  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.3));
+  background: rgba(255,255,255,0.94);
+  border-radius: 12px;
+  padding: 8px 16px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+  box-sizing: content-box;
 }
 .intro-logo-fallback {
   font-size: 56px;
@@ -372,6 +396,18 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 800;
   font-size: 15px;
   letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header-logo-img {
+  height: 22px;
+  width: auto;
+  background: #fff;
+  border-radius: 4px;
+  padding: 2px 5px;
+  box-sizing: content-box;
+  display: block;
 }
 #header-search {
   flex: 1;
@@ -680,6 +716,35 @@ button { font-family: inherit; cursor: pointer; }
   user-select: none;
 }
 .msg-avatar.spacer { background: transparent; }
+
+/* Image avatars (when CHARACTERS[c].image is set, _avatarHtml renders an <img>) */
+.msg-avatar.has-image,
+.nb-avatar.has-image,
+.li-comment-avatar.has-image,
+.header-user-avatar.has-image {
+  background: #1d1c1d;
+  overflow: hidden;
+  padding: 0;
+}
+.msg-avatar.has-image img,
+.nb-avatar.has-image img,
+.li-comment-avatar.has-image img,
+.header-user-avatar.has-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+  border-radius: inherit;
+}
+/* Bingo's portrait has 3 poses laid horizontally — anchor + zoom on the front-standing pose. */
+.msg-avatar.has-image img[alt="Bingo"],
+.nb-avatar.has-image img[alt="Bingo"],
+.li-comment-avatar.has-image img[alt="Bingo"] {
+  object-position: 50% 100%;
+  transform: scale(1.6);
+  transform-origin: 50% 90%;
+}
 
 .msg-body { flex: 1; min-width: 0; }
 .msg-head {
@@ -1022,6 +1087,7 @@ button { font-family: inherit; cursor: pointer; }
   width: 280px;
   flex-shrink: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 0;
 }
 .rail-section {
@@ -1217,6 +1283,22 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 800;
   color: var(--slack-text);
   margin-left: 4px;
+}
+
+/* Ending illustration: visual hook above the LinkedIn post */
+#end-illustration {
+  margin: 0 0 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1d1c1d;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.18);
+  text-align: center;
+}
+#end-illustration-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
 }
 
 /* LinkedIn-style post card */

@@ -897,6 +897,7 @@ const EPISODE_1 = {
       hashtags: "#DevOps #Mentorship #IncidentResponse #Develeap",
       badgeIcon: "🏆",
       badgeLabel: "DevOps Diplomat",
+      image: "True.png",
       goalScore: 100,
       revealsCode: true
     },
@@ -909,6 +910,7 @@ const EPISODE_1 = {
       hashtags: "#DevOps #LessonsLearned #Mentorship",
       badgeIcon: "😮‍💨",
       badgeLabel: "Survivor",
+      image: "OK.png",
       goalScore: 75,
       revealsCode: false
     },
@@ -922,6 +924,7 @@ const EPISODE_1 = {
       hashtags: "#DevOps #IncidentResponse #LessonsLearned",
       badgeIcon: "📉",
       badgeLabel: "Postmortem Pending",
+      image: "Bad.png",
       goalScore: 50,
       revealsCode: false
     },
@@ -939,6 +942,7 @@ const EPISODE_1 = {
       hashtags: "#PostMortem #DevOps #LinkedInRebuild",
       badgeIcon: "💥",
       badgeLabel: "End of the Cloud",
+      image: "Chaos.png",
       goalScore: 0,
       revealsCode: false
     },
@@ -955,6 +959,7 @@ const EPISODE_1 = {
       hashtags: "#AGI #DevOps #BingoForCTO #BrianIsFine",
       badgeIcon: "🤖",
       badgeLabel: "Acting CTO Brian",
+      image: "Absurd.png",
       goalScore: 100,
       revealsCode: false
     }

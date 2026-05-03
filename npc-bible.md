@@ -1,4 +1,4 @@
-# NPC Bible
+o# NPC Bible
 
 Six characters. Each has a strong distinct voice. Player encounters them across two parallel Slack contexts:
 

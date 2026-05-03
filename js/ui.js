@@ -364,6 +364,20 @@ function showEnd(endingData, activeChars, scores, endingKey) {
   document.getElementById('badge-icon').textContent  = endingData.badgeIcon || '🏆';
   document.getElementById('badge-label').textContent = endingData.badgeLabel || '';
 
+  // Ending illustration: shown above the LinkedIn post when the ending has an image.
+  const illoWrap = document.getElementById('end-illustration');
+  const illoImg  = document.getElementById('end-illustration-img');
+  if (illoWrap && illoImg) {
+    if (endingData.image) {
+      illoImg.src = endingData.image;
+      illoImg.alt = endingData.badgeLabel || '';
+      illoWrap.style.display = 'block';
+    } else {
+      illoWrap.style.display = 'none';
+      illoImg.removeAttribute('src');
+    }
+  }
+
   // Engagement count: scaled by ending tone. Bad/colossal endings get cool
   // engagement; absurd gets buzz; true gets the most.
   const avgScore = activeChars.reduce((sum, id) => sum + (scores[id] || 50), 0) / Math.max(1, activeChars.length);
@@ -394,7 +408,7 @@ function showEnd(endingData, activeChars, scores, endingKey) {
       if (!text) return '';
       return `
         <div class="li-comment">
-          <div class="li-comment-avatar" style="background:${c.color}">${c.avatar}</div>
+          ${_avatarHtml(c, 'li-comment-avatar')}
           <div class="li-comment-body">
             <div class="li-comment-name">${c.name} <span class="li-comment-role">· ${c.role || ''}</span></div>
             <div class="li-comment-text" dir="auto">${text}</div>
