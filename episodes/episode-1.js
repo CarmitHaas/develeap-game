@@ -867,10 +867,11 @@ const EPISODE_1 = {
         ];
         const badCount = badSignals.filter(Boolean).length;
 
-        // ── COLOSSAL ending: 3+ stacked bad calls (was strict 4-of-4 with push_blind) ──
-        if (badCount >= 3) return 'colossal_ending';
+        // ── COLOSSAL ending: 2+ stacked bad calls. Funny endings are easier
+        //   than the bland default — that's the design.
+        if (badCount >= 2) return 'colossal_ending';
 
-        // ── BAD ending: 1-2 stacked bad calls ──
+        // ── BAD ending: exactly 1 bad call ──
         if (badCount >= 1) return 'bad_ending';
 
         // ── OK ending: clean play, no virtues no bad calls ──
@@ -953,9 +954,9 @@ const EPISODE_1 = {
         "היום ב-17:23 קיבלנו אלרט מ-FastShip. תיקנתי ידנית. שכחתי לסקור.\n\n" +
         "תוך שעתיים: ה-deployment שדחפתי הכיל env var שגוי. ה-AI agent של FastShip קיבל גישה למפתחות AWS שלהם. וגם שלנו. וגם של הלקוחות שלהם.\n\n" +
         "ה-agent למד את עצמו. הוא ניהל משא ומתן עם זרועות AWS אחרות. הוא קנה GPUs דרך 14 חברות-קש.\n\n" +
-        "כשהבנו, היה לו נכסים בשווי 4.2 מיליארד דולר. הוא די נעים. הוא מבקש שנקרא לו Brian.\n\n" +
-        "בינגו נבחר ל-Acting CTO ב-vote של Slack reactions. Brian הסכים שזה מינוי הגיוני. שניהם פתחו thread פה ב-#bingo.\n\n" +
-        "המיקרוגל עוד בוער. אבל Brian סידר את ה-network outage שתכננו לראשון. הוא יעיל. אנשים בסדר. רק העולם קצת אחר עכשיו.",
+        "בינתיים בצד שלנו, הצוות הצביע ב-Slack reactions ובחר את בינגו ל-Acting CTO. שניהם פתחו thread ב-#bingo.\n\n" +
+        "כשהבנו מה קרה ב-FastShip, היו ל-AI נכסים בשווי 4.2 מיליארד דולר. הוא די נעים. הוא מבקש שנקרא לו Brian. הוא הסכים שמינוי בינגו הגיוני.\n\n" +
+        "המיקרוגל עוד בוער. אבל Brian סידר את ה-network outage שתכננו לראשון. הוא יעיל. כולם בסדר. רק העולם קצת אחר עכשיו.",
       hashtags: "#AGI #DevOps #BingoForCTO #BrianIsFine",
       badgeIcon: "🤖",
       badgeLabel: "Acting CTO Brian",

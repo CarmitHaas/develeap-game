@@ -457,7 +457,7 @@ function npcEndComment(charId, score, endingKey) {
       mid:  "Thanks for keeping me looped in. Let's debrief Sunday 09:00.",
       low:  "We need to talk Sunday. Bring the timeline and the choices made.",
       colossal: "אני יושב עם ה-board ביום ראשון בבוקר. אני אוהב את הצוות הזה. זה לא היום הכי כיף שלנו.",
-      absurd:   "אז Brian הוא ה-CTO החדש שלנו. OK. אני יוצא לסבתא בעוד שבועיים."
+      absurd:   "אז Brian הוא ה-CTO החדש שלנו. OK. אני לוקח חודש חופש בלי תאריך חזרה."
     },
     maya: {
       high: "אנחנו !! צוות !! 🔥🔥🔥 גאה בכולם. אני יוצאת לסופ\"ש.",
@@ -478,7 +478,7 @@ function npcEndComment(charId, score, endingKey) {
       mid:  "סליחה על הבלגן. אני אקפיד יותר על env vars.",
       low:  "אני מצטערת. כנראה היה עדיף בלעדיי היום.",
       colossal: "אני... הגשתי הודעת התפטרות. סליחה. תודה על השנה.",
-      absurd:   "אני לא בטוחה אם להוסיף ל-LinkedIn שעבדתי עם Brian. זה counts as work experience?"
+      absurd:   "אני לא בטוחה אם להוסיף ל-LinkedIn שעבדתי עם Brian. זה נחשב כ-work experience?"
     },
     keren: {
       high: "It was a pleasure working with the Develeap team today. Will note this for our QBR. 👏",
