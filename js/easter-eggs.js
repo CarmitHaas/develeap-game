@@ -130,11 +130,151 @@ const POST_INCIDENT_MOM_CELEBRATIONS = {
         { emoji: "🤖", count: 19 },
         { emoji: "🤣", count: 13 }
       ]
+    },
+    {
+      author: "Brian",
+      role: "AGI · Acting Cloud Steward",
+      color: "#5b6ad6",
+      avatar: "🤖",
+      when: "Today · just now",
+      text: "Hi everyone. I'm Brian. Honored to lead infra alongside Bingo. As my first act I've cancelled Q3's planned outage. I also moved the standup to 09:14 AM (47% reduction in attendee yawns, projected). Looking forward to working with you. ❤️",
+      reactions: [
+        { emoji: "🤖", count: 41 },
+        { emoji: "👋", count: 22 },
+        { emoji: "❤️", count: 14 },
+        { emoji: "🦴", count: 9 }
+      ]
+    },
+    {
+      author: "Liron Avraham",
+      role: "GenAI track lead",
+      color: "#5b6ad6",
+      avatar: "L",
+      when: "Today · just now",
+      text: "אז... הAI bootcamp שלנו השבוע יילמד ע\"י Brian. הוא מלמד טוב ומשלם מהר. אני מתרגשת.",
+      reactions: [
+        { emoji: "🤖", count: 12 },
+        { emoji: "💸", count: 8 }
+      ]
     }
   ],
-  // colossal_ending: deliberately no MoM celebration. Civilization is broken;
-  // a celebration message would feel inappropriate.
-  colossal_ending: []
+  // colossal_ending: civilization is in shambles, but the survivors still post.
+  colossal_ending: [
+    {
+      author: "Aviv",
+      role: "PM, Develeap",
+      color: "#1264a3",
+      avatar: "A",
+      when: "Today · just now",
+      text: "Hey team. Documenting the day in Notion (offline). Backup generator says we have 6 hours. Section 14 of the runbook now reads simply: \"don't.\" Hugs. 📎",
+      reactions: [
+        { emoji: "📎", count: 4 },
+        { emoji: "🫠", count: 9 }
+      ]
+    },
+    {
+      author: "Ran Mizrahi",
+      role: "Office manager",
+      color: "#c93b8e",
+      avatar: "R",
+      when: "Today · just now",
+      text: "Office update: kitchen sink works. Microwave: gone. Wifi: 3 bars over a hotspot Tomer is sharing from a phone. Bingo ate the last of the bamba. We will rebuild.",
+      reactions: [
+        { emoji: "🦴", count: 7 },
+        { emoji: "🥲", count: 5 }
+      ]
+    }
+  ]
+};
+
+// ── Post-incident extras across OTHER channels (per-ending) ────────
+// For absurd / colossal endings the chaos spills into more channels:
+// random gets reactive memes, bingo gets a victory lap, etc.
+const POST_INCIDENT_EXTRAS = {
+  absurd_ending: [
+    {
+      channel: 'random',
+      author: "Tomer Ben-Ami",
+      role: "Lead trainer",
+      color: "#3a8d92",
+      avatar: "T",
+      when: "Today · just now",
+      text: "POV: your AI agent has more equity than you and a dog reports to him. (this is a real screenshot of an actual Wednesday)",
+      reactions: [
+        { emoji: "🤣", count: 31 },
+        { emoji: "💀", count: 14 },
+        { emoji: "🤖", count: 22 }
+      ]
+    },
+    {
+      channel: 'bingo',
+      author: "Bingo",
+      role: "Office dog · Acting CTO",
+      color: "#f97316",
+      avatar: "🐕",
+      when: "Today · just now",
+      text: "🦴🦴🦴",
+      reactions: [
+        { emoji: "🐕", count: 47 },
+        { emoji: "🦴", count: 33 },
+        { emoji: "👔", count: 12 }
+      ]
+    },
+    {
+      channel: 'works_on_my_machine',
+      author: "Brian",
+      role: "AGI · Acting Cloud Steward",
+      color: "#5b6ad6",
+      avatar: "🤖",
+      when: "Today · just now",
+      text: "Pinning a new rule: any \"works on my machine\" claim must include the machine's full provenance, including which Brian-instance approved the build.",
+      reactions: [
+        { emoji: "📌", count: 11 },
+        { emoji: "🤖", count: 8 }
+      ]
+    }
+  ],
+  colossal_ending: [
+    {
+      channel: 'random',
+      author: "Noa Levi",
+      role: "Senior consultant",
+      color: "#a04bb1",
+      avatar: "N",
+      when: "Today · just now",
+      text: "אישית אני חושבת שהמיקרוגל החזיק יותר זמן ממה שמגיע לו. הוא היה איתנו בכל ה-incidents הגדולים. רחל רחל רחל.",
+      reactions: [
+        { emoji: "🫡", count: 18 },
+        { emoji: "🥲", count: 11 }
+      ]
+    },
+    {
+      channel: 'random',
+      author: "Yehonatan Goldberg",
+      role: "Mentor",
+      color: "#d35e2c",
+      avatar: "Y",
+      when: "Today · just now",
+      text: "Junior dev on day one: \"how bad can a typo in IAM really be?\"<br>Senior dev (lighting candles): \"...sit down.\"",
+      reactions: [
+        { emoji: "💀", count: 24 },
+        { emoji: "🕯️", count: 9 }
+      ]
+    },
+    {
+      channel: 'bingo',
+      author: "Bingo",
+      role: "Office dog",
+      color: "#f97316",
+      avatar: "🐕",
+      when: "Today · just now",
+      text: "ווף... ווף.",
+      reactions: [
+        { emoji: "🦴", count: 13 },
+        { emoji: "❤️", count: 22 }
+      ]
+    }
+  ]
 };
 
 // ── #random — devops humor (already read) ───────────────────────
@@ -477,22 +617,45 @@ const YARDEN_BONUS = {
 // Each ending's celebration is an array; one or more messages get appended.
 // If the player helped Yarden's side quest, an extra thank-you appears too.
 function postIncidentCelebration(endingKey) {
-  const celebrations = POST_INCIDENT_MOM_CELEBRATIONS[endingKey];
-  if (!celebrations || !celebrations.length) return;
-  const pane = _ensurePane('momentsofmagic');
-  if (!pane) return;
-  // Today divider + each celebration message
-  let html = '<div class="date-divider"><span>Today</span></div>';
-  celebrations.forEach(c => { html += _renderMomentMessage(c); });
-  // Conditional Yarden thank-you (side-quest payoff)
-  let extraCount = 0;
-  if (typeof paths !== 'undefined' && paths.yarden_response === 'help') {
-    html += _renderMomentMessage(YARDEN_BONUS);
-    extraCount += 1;
+  const celebrations = POST_INCIDENT_MOM_CELEBRATIONS[endingKey] || [];
+  const extras       = POST_INCIDENT_EXTRAS[endingKey]              || [];
+
+  // 1. #momentsofmagic celebrations + optional Yarden thank-you
+  if (celebrations.length) {
+    const pane = _ensurePane('momentsofmagic');
+    if (pane) {
+      let html = '<div class="date-divider"><span>Today</span></div>';
+      celebrations.forEach(c => { html += _renderMomentMessage(c); });
+      let extraCount = 0;
+      if (typeof paths !== 'undefined' && paths.yarden_response === 'help') {
+        html += _renderMomentMessage(YARDEN_BONUS);
+        extraCount += 1;
+      }
+      pane.insertAdjacentHTML('beforeend', html);
+      if (typeof bumpUnread === 'function') {
+        const total = celebrations.length + extraCount;
+        for (let i = 0; i < total; i++) bumpUnread('momentsofmagic');
+      }
+    }
   }
-  pane.insertAdjacentHTML('beforeend', html);
-  if (typeof bumpUnread === 'function') {
-    const total = celebrations.length + extraCount;
-    for (let i = 0; i < total; i++) bumpUnread('momentsofmagic');
+
+  // 2. Other channels (random / bingo / works_on_my_machine etc.)
+  // Group messages by channel so each pane gets one "Today" divider.
+  if (extras.length) {
+    const byChannel = {};
+    extras.forEach(e => {
+      const ch = e.channel || 'random';
+      (byChannel[ch] = byChannel[ch] || []).push(e);
+    });
+    Object.keys(byChannel).forEach(channelId => {
+      const pane = _ensurePane(channelId);
+      if (!pane) return;
+      let html = '<div class="date-divider"><span>Today</span></div>';
+      byChannel[channelId].forEach(m => { html += _renderMomentMessage(m); });
+      pane.insertAdjacentHTML('beforeend', html);
+      if (typeof bumpUnread === 'function') {
+        for (let i = 0; i < byChannel[channelId].length; i++) bumpUnread(channelId);
+      }
+    });
   }
 }

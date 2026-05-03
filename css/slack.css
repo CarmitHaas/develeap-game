@@ -283,40 +283,61 @@ button { font-family: inherit; cursor: pointer; }
 #intro-screen.hidden { animation: fadeOut 0.5s ease forwards; }
 @keyframes fadeOut { to { opacity: 0; pointer-events: none; } }
 
+.intro-eyebrow {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #f1c40f;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  margin-bottom: 6px;
+}
 .intro-hero-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
   width: 100%;
 }
 .intro-hero-img {
-  max-height: 240px;
-  max-width: min(560px, 88vw);
+  max-height: 360px;
+  max-width: min(720px, 92vw);
   width: auto;
   height: auto;
   border-radius: 14px;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
   display: block;
 }
-@media (max-height: 720px) {
-  .intro-hero-img { max-height: 180px; }
+@media (max-height: 820px) {
+  .intro-hero-img { max-height: 280px; }
+}
+@media (max-height: 700px) {
+  .intro-hero-img { max-height: 200px; }
+}
+@media (max-width: 560px) {
+  .intro-hero-img { max-height: 220px; }
+}
+.intro-footer {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.75;
 }
 .intro-logo-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4px;
 }
 .intro-logo-img {
-  max-height: 80px;
-  max-width: 260px;
+  max-height: 36px;
+  max-width: 160px;
   width: auto;
   height: auto;
-  background: rgba(255,255,255,0.94);
-  border-radius: 12px;
-  padding: 8px 16px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+  background: rgba(255,255,255,0.9);
+  border-radius: 6px;
+  padding: 4px 10px;
   box-sizing: content-box;
 }
 .intro-logo-fallback {
@@ -328,18 +349,21 @@ button { font-family: inherit; cursor: pointer; }
   font-family: 'Lato', sans-serif;
 }
 .intro-meta {
-  font-size: 22px;
-  font-weight: 800;
-  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
   letter-spacing: 0.3px;
-  margin-top: 6px;
 }
 .intro-title {
-  font-size: 38px;
+  font-size: 34px;
   font-weight: 900;
   letter-spacing: -0.5px;
   text-align: center;
   line-height: 1.1;
+}
+@media (max-width: 560px) {
+  .intro-title { font-size: 24px; }
+  .intro-eyebrow { font-size: 12px; letter-spacing: 2px; }
 }
 .intro-subtitle {
   font-size: 16px;

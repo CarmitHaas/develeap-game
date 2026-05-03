@@ -85,7 +85,6 @@ function renderReveal(endingKey, revealsCode) {
           <button class="end-btn" onclick="copyCodeToClipboard()">📋 העתקה</button>
           ${formButton}
         </div>
-        <div class="reveal-skip">השליחה רשות. אפשר גם פשוט להמשיך לשחק.</div>
       </div>
     `;
   }
@@ -96,12 +95,11 @@ function renderReveal(endingKey, revealsCode) {
     : `<span class="end-btn" style="opacity:0.6;cursor:default;">(קישור הטופס יוגדר בקרוב)</span>`;
   return `
     <div class="reveal-block reveal-soft" dir="rtl">
-      <div class="reveal-headline">📨 רוצים לשתף איך זה התגלגל?</div>
+      <div class="reveal-headline">📨 אז לאן הגעתם?</div>
       <div class="reveal-soft-text">בטופס תוכלו לכתוב לאיזה סוף הגעתם, מה הייתם עושים אחרת, או סתם להגיד שלום. הקוד הזוכה לא נחשף בסוף הזה - אבל אם הצלחתם להגיע אליו במשחק קודם, אתם מוזמנים להוסיף אותו.</div>
       <div class="reveal-actions">
         ${formButton}
       </div>
-      <div class="reveal-skip">השליחה רשות. אפשר גם פשוט לשחק שוב ולנסות סוף אחר.</div>
     </div>
   `;
 }

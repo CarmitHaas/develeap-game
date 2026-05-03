@@ -197,7 +197,8 @@ function runBeat(beatId) {
       if (!endData) { console.warn('Ending not found:', endingKey); done(); return; }
       setGoal(endData.goalScore != null ? endData.goalScore : 100);
       GameState.completeEpisode(currentEpisode.id, scores, endData.badgeIcon);
-      // Good endings: drop a celebration message into #momentsofmagic before showing the end screen
+      // Drop post-incident channel content (good endings get celebration in
+      // #momentsofmagic; absurd/colossal also spill chaos into #random / #bingo / etc.)
       if (typeof postIncidentCelebration === 'function') {
         postIncidentCelebration(endingKey);
       }
