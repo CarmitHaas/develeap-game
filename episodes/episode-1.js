@@ -16,7 +16,7 @@ const EPISODE_1 = {
   activeChars: ["avi", "aviv", "maya", "segev", "inbar", "keren", "bingo"],
 
   initialScores: {
-    avi: 50, aviv: 50, maya: 50, segev: 50, inbar: 50, keren: 50, bingo: 50, yarden: 50
+    avi: 50, aviv: 50, maya: 50, segev: 50, inbar: 50, keren: 50, bingo: 50
   },
 
   dateLabel: "Today, Thursday",
@@ -280,7 +280,7 @@ const EPISODE_1 = {
           isEmoji: true,
           effects: { maya: -3, bingo: +20 },
           goalDelta: 0,
-          next: "beat_4b_yarden_dm",
+          next: "beat_5_dispatch",
           path: "dog_friend",
           pathKey: "bingo_path"
         },
@@ -289,7 +289,7 @@ const EPISODE_1 = {
           channel: "general",
           effects: { aviv: +5, maya: +5, segev: +3, bingo: -5 },
           goalDelta: 5,
-          next: "beat_4b_yarden_dm",
+          next: "beat_5_dispatch",
           path: "pro",
           pathKey: "bingo_path"
         },
@@ -299,54 +299,9 @@ const EPISODE_1 = {
           channel: "bingo",
           effects: { segev: -5, bingo: -25 },
           goalDelta: 0,
-          next: "beat_4b_yarden_dm",
+          next: "beat_5_dispatch",
           path: "bingo_disrespect",
           pathKey: "bingo_path"
-        }
-      ]
-    },
-
-    // ═════════════════════════════════════════════════════════════
-    // BEAT 4b: SIDE QUEST - Yarden DMs about a parallel bootcamp incident.
-    // Tests the player's multi-tasking judgment. No effect on the main outcome,
-    // but `paths.yarden_response` unlocks a small post-incident MoM line.
-    // ═════════════════════════════════════════════════════════════
-    {
-      id: "beat_4b_yarden_dm",
-      channel: "dm_yarden",
-      messages: [
-        { from: "yarden", channel: "dm_yarden", text: "היי! סליחה על ההפרעה. יש לי בעיה עם ה-bootcamp env שלי - ה-CI לא רץ.", typingMs: 2000 },
-        { from: "yarden", channel: "dm_yarden", text: "השיעור ב-09:00 מחר. יש מצב לעזרה של שתי דקות?", typingMs: 1800 }
-      ],
-      choices: [
-        {
-          label: "Help Yarden quickly",
-          text: "תני שתי דקות. אני בלחץ פה, אבל תיכף איתך.",
-          channel: "dm_yarden",
-          effects: { yarden: +25 },
-          goalDelta: -5,
-          next: "beat_5_dispatch",
-          path: "help",
-          pathKey: "yarden_response"
-        },
-        {
-          label: "Defer Yarden",
-          text: "ירדן, אני בעיצומו של incident. נדבר בעוד שעה?",
-          channel: "dm_yarden",
-          effects: { yarden: +5 },
-          goalDelta: 0,
-          next: "beat_5_dispatch",
-          path: "defer",
-          pathKey: "yarden_response"
-        },
-        {
-          label: "Ignore (do not respond)",
-          channel: "dm_yarden",
-          effects: { yarden: -20 },
-          goalDelta: +5,
-          next: "beat_5_dispatch",
-          path: "ignore",
-          pathKey: "yarden_response"
         }
       ]
     },
@@ -862,8 +817,7 @@ const EPISODE_1 = {
           paths.first_response === 'blame',
           paths.fix_method     === 'cowboy_fix',
           paths.review_method  === 'no_review',
-          paths.cowboy_substep === 'push_blind',
-          paths.yarden_response === 'ignore'
+          paths.cowboy_substep === 'push_blind'
         ];
         const badCount = badSignals.filter(Boolean).length;
 

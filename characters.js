@@ -12,6 +12,5 @@ const CHARACTERS = {
   inbar:  { name: "Inbar",  color: "#ecb22e", avatar: "I",  role: "Junior consultant @ FastShip", image: "Inbar.png" },
   keren:  { name: "Keren",  color: "#4a154b", avatar: "K",  role: "PM @ FastShip",                 image: "Keren.png" },
   bingo:  { name: "Bingo",  color: "#f97316", avatar: "🐕", role: "Office dog",                    image: "Bingo.png" },
-  yarden: { name: "Yarden", color: "#0e7490", avatar: "Y",  role: "Trainer @ bootcamp-23" },
   player: { name: "you",    color: "#616061", avatar: "★" }
 };

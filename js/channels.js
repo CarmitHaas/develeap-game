@@ -60,7 +60,6 @@ const CHANNELS = {
   dm_aviv:   { id: "dm_aviv",   name: "Aviv",   kind: "dm", with: "aviv"   },
   dm_maya:   { id: "dm_maya",   name: "Maya",   kind: "dm", with: "maya"   },
   dm_inbar:  { id: "dm_inbar",  name: "Inbar",  kind: "dm", with: "inbar"  },
-  dm_yarden: { id: "dm_yarden", name: "Yarden", kind: "dm", with: "yarden" },
   dm_bingo:  { id: "dm_bingo",  name: "Bingo",  kind: "dm", with: "bingo"  }
 };
 
@@ -74,7 +73,7 @@ const CHANNEL_ORDER = [
   "bingo",
   "random"
 ];
-const DM_ORDER = ["dm_aviv", "dm_maya", "dm_inbar", "dm_yarden", "dm_bingo"];
+const DM_ORDER = ["dm_aviv", "dm_maya", "dm_inbar", "dm_bingo"];
 
 // ── State ────────────────────────────────────────────────────────
 let activeChannel = "fastship_prod";

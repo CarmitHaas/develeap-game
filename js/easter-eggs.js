@@ -598,43 +598,22 @@ function loadEasterEggs() {
   }
 }
 
-// Yarden's bonus thank-you that fires only if the player helped the side quest.
-const YARDEN_BONUS = {
-  author: "Yarden Levi",
-  role: "Trainer @ bootcamp-23",
-  color: "#0e7490",
-  avatar: "Y",
-  when: "Today · just now",
-  text: "🙏 תודה ענקית ל-@you שעזרו לי עם ה-CI של bootcamp-23 היום באמצע יום מטורף. השיעור מחר בבוקר רץ. אנשים גדולים.",
-  reactions: [
-    { emoji: "🙏", count: 9 },
-    { emoji: "❤️", count: 6 }
-  ]
-};
-
 // ── Public: post-incident celebration (called after a good ending) ──
 // Adds NEW message(s) to #momentsofmagic and bumps the unread badge.
 // Each ending's celebration is an array; one or more messages get appended.
-// If the player helped Yarden's side quest, an extra thank-you appears too.
 function postIncidentCelebration(endingKey) {
   const celebrations = POST_INCIDENT_MOM_CELEBRATIONS[endingKey] || [];
   const extras       = POST_INCIDENT_EXTRAS[endingKey]              || [];
 
-  // 1. #momentsofmagic celebrations + optional Yarden thank-you
+  // 1. #momentsofmagic celebrations
   if (celebrations.length) {
     const pane = _ensurePane('momentsofmagic');
     if (pane) {
       let html = '<div class="date-divider"><span>Today</span></div>';
       celebrations.forEach(c => { html += _renderMomentMessage(c); });
-      let extraCount = 0;
-      if (typeof paths !== 'undefined' && paths.yarden_response === 'help') {
-        html += _renderMomentMessage(YARDEN_BONUS);
-        extraCount += 1;
-      }
       pane.insertAdjacentHTML('beforeend', html);
       if (typeof bumpUnread === 'function') {
-        const total = celebrations.length + extraCount;
-        for (let i = 0; i < total; i++) bumpUnread('momentsofmagic');
+        for (let i = 0; i < celebrations.length; i++) bumpUnread('momentsofmagic');
       }
     }
   }
