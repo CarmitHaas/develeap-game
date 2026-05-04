@@ -11,6 +11,6 @@ const CHARACTERS = {
   segev:  { name: "Segev",  color: "#2eb67d", avatar: "S",  role: "Senior DevOps",                 image: "Segev.png" },
   inbar:  { name: "Inbar",  color: "#ecb22e", avatar: "I",  role: "Junior consultant @ FastShip", image: "Inbar.png" },
   keren:  { name: "Keren",  color: "#4a154b", avatar: "K",  role: "PM @ FastShip",                 image: "Keren.png" },
-  bingo:  { name: "Bingo",  color: "#f97316", avatar: "🐕", role: "Office dog",                    image: "Bingo.png" },
+  bingo:  { name: "Bingo",  color: "#f97316", avatar: "🐕", role: "Office dog",                    image: "Bingo.jpg" },
   player: { name: "you",    color: "#616061", avatar: "★" }
 };

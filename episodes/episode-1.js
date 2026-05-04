@@ -591,9 +591,9 @@ const EPISODE_1 = {
           { from: "aviv",  channel: "general",   text: "ל-protocol: אני פותח Linear ticket לעדכון ה-runbook עם התיקון הזה.", typingMs: 1800 }
         ],
         solo_review: [
-          { from: "aviv",  channel: "dm_inbar",  text: "ה-diff נראה נכון. עמוד 12 ב-runbook אגב.", typingMs: 1600 },
-          { from: "inbar", channel: "dm_inbar",  text: "deployed.", typingMs: 800 },
-          { from: "inbar", channel: "dm_inbar",  text: "🟢 200 OK", typingMs: 800 }
+          { from: "player", channel: "dm_inbar",  text: "ה-diff נראה נכון. דחפי.", typingMs: 1400 },
+          { from: "inbar",  channel: "dm_inbar",  text: "deployed.", typingMs: 800 },
+          { from: "inbar",  channel: "dm_inbar",  text: "🟢 200 OK", typingMs: 800 }
         ],
         no_review: [
           { from: "inbar", channel: "dm_inbar",  text: "🟢 200 OK", typingMs: 800 },
@@ -852,7 +852,7 @@ const EPISODE_1 = {
       hashtags: "#DevOps #Mentorship #IncidentResponse #Develeap",
       badgeIcon: "🏆",
       badgeLabel: "DevOps Diplomat",
-      image: "True.png",
+      image: "True.jpg",
       goalScore: 100,
       revealsCode: true
     },
@@ -865,7 +865,7 @@ const EPISODE_1 = {
       hashtags: "#DevOps #LessonsLearned #Mentorship",
       badgeIcon: "😮‍💨",
       badgeLabel: "Survivor",
-      image: "OK.png",
+      image: "OK.jpg",
       goalScore: 75,
       revealsCode: false
     },
@@ -879,7 +879,7 @@ const EPISODE_1 = {
       hashtags: "#DevOps #IncidentResponse #LessonsLearned",
       badgeIcon: "📉",
       badgeLabel: "Postmortem Pending",
-      image: "Bad.png",
+      image: "Bad.jpg",
       goalScore: 50,
       revealsCode: false
     },
@@ -897,7 +897,7 @@ const EPISODE_1 = {
       hashtags: "#PostMortem #DevOps #LinkedInRebuild",
       badgeIcon: "💥",
       badgeLabel: "End of the Cloud",
-      image: "Chaos.png",
+      image: "Chaos.jpg",
       goalScore: 0,
       revealsCode: false
     },
@@ -914,7 +914,7 @@ const EPISODE_1 = {
       hashtags: "#AGI #DevOps #BingoForCTO #BrianIsFine",
       badgeIcon: "🤖",
       badgeLabel: "Acting CTO Brian",
-      image: "Absurd.png",
+      image: "Absurd.jpg",
       goalScore: 100,
       revealsCode: false
     }
