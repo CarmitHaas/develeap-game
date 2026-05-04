@@ -67,6 +67,31 @@ const MOMENTS_OF_MAGIC = [
       { emoji: "🐕", count: 11 },
       { emoji: "🥪", count: 5 }
     ]
+  },
+  {
+    author: "Inbal Reuven",
+    role: "Senior consultant",
+    color: "#5b6ad6",
+    avatar: "I",
+    when: "Tue · 9:42 AM",
+    text: "💙 הערכה גדולה לסיגל שלקחה אחריות מול הלקוח אתמול תוך כדי incident. כשהבעלים של הצוות שלנו עומדת בחזית של הערוץ של הלקוח, זה מה שעושה את ההבדל. ככה שומרים על הלקוח.",
+    reactions: [
+      { emoji: "🙏", count: 16 },
+      { emoji: "💙", count: 14 },
+      { emoji: "🔥", count: 7 }
+    ]
+  },
+  {
+    author: "Liron Avraham",
+    role: "GenAI track lead",
+    color: "#5b6ad6",
+    avatar: "L",
+    when: "Thu · 7:10 PM",
+    text: "🌟 רותם נגד החוקים: היא הפנתה את ה-CTO לבעיה שהוא היה הכי טוב לפתור, במקום לנסות לבד. גם זה ניהול. זה לא חולשה - זה כיבוד ההיררכיה ההפוכה: לתת לאנשים את העבודה שהם הכי טובים בה.",
+    reactions: [
+      { emoji: "💯", count: 11 },
+      { emoji: "🌟", count: 6 }
+    ]
   }
 ];
 
@@ -351,6 +376,18 @@ const RANDOM_MEMES = [
       { emoji: "☕", count: 6 }
     ]
   },
+  {
+    author: "Yehonatan Goldberg",
+    role: "Mentor",
+    color: "#d35e2c",
+    avatar: "Y",
+    when: "Today · 10:20 AM",
+    text: "תזכורת לעצמי: ה-fix שדוחפים בלי review הוא ה-fix שתסביר ב-postmortem ביום ראשון. שווה את 5 הדקות.",
+    reactions: [
+      { emoji: "💯", count: 18 },
+      { emoji: "😤", count: 6 }
+    ]
+  },
   // ── Three reader-supplied memes (rendered as actual images) ──
   {
     author: "Yehonatan Goldberg",
@@ -475,6 +512,19 @@ const BOOTCAMPS_DEPT = [
     role: "Lead trainer",
     color: "#3a8d92",
     avatar: "T",
+    when: "Mon · 4:18 PM",
+    text: "📌 מנטור מצוין יודע: כשהג'וניור טועה, התפקיד שלך לעמוד מאחוריו - לא לפניו. שווה לזכור.",
+    reactions: [
+      { emoji: "📌", count: 17 },
+      { emoji: "❤️", count: 23 },
+      { emoji: "🙏", count: 8 }
+    ]
+  },
+  {
+    author: "Tomer Ben-Ami",
+    role: "Lead trainer",
+    color: "#3a8d92",
+    avatar: "T",
     when: "Today · 11:02 AM",
     text: "אל תשכחו להצביע לסקר - מי המנטור/ית המעולה בכל הזמנים! 🏆",
     reactions: [
@@ -530,6 +580,18 @@ const WORKS_ON_MY_MACHINE = [
     reactions: [
       { emoji: "🤣", count: 7 },
       { emoji: "🫠", count: 4 }
+    ]
+  },
+  {
+    author: "Yehonatan Goldberg",
+    role: "Mentor",
+    color: "#d35e2c",
+    avatar: "Y",
+    when: "Today · 12:08 PM",
+    text: "מסקנה השבוע: pair-review של 5 דקות חסך לי deploy של 3 שעות. אין תחליף לעיניים נוספות לפני שדוחפים.",
+    reactions: [
+      { emoji: "💯", count: 14 },
+      { emoji: "👀", count: 9 }
     ]
   }
 ];

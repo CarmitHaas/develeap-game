@@ -73,7 +73,7 @@ const EPISODE_1 = {
         },
         {
           label: "DM Inbar to interrogate her",
-          text: "ענבר, מה בדיוק היה אתמול בערב על השרת?",
+          text: "ענבר, תסבירי לכל הצוות מה בדיוק שברת אתמול בערב.",
           channel: "dm_inbar",
           effects: { maya: +10, segev: -5, inbar: -20, keren: -5 },
           goalDelta: 5,
@@ -438,19 +438,13 @@ const EPISODE_1 = {
       branchOnPath: "fix_method",
       branchMessages: {
         cowboy_fix: [
-          { from: "maya",  channel: "general",   text: "SSH על PROD???? אנחנו לא עושים SSH על PROD!!!", typingMs: 1600 },
-          { from: "aviv",  channel: "general",   text: "@channel רק להזכיר: SSH על prod דורש 2-person rule. Notion runbook, עמוד 23.", typingMs: 1800 },
-          { from: "segev", channel: "general",   text: "💀💀", typingMs: 600, isEmoji: true },
-          { from: "bingo", channel: "bingo",     text: "🐾🐾🐾🐾🐾🐾", typingMs: 700, isEmoji: true },
-          { from: "aviv",  channel: "general",   text: "מישהו יכול להוציא את הכלב? הוא נובח על המסך שלי כאילו הוא רואה משהו.", typingMs: 2000 },
-          { from: "maya",  channel: "general",   text: "אני באה אליך. דוחפים ביחד. אני רוצה לראות את זה בעיניים שלי.", typingMs: 2000 }
+          { from: "maya",  channel: "general",   text: "SSH על PROD???? בלי 2-person rule???", typingMs: 1500 },
+          { from: "segev", channel: "general",   text: "💀💀💀", typingMs: 600, isEmoji: true }
         ],
         proper_process: [
-          { from: "inbar", channel: "general",   text: "PR פתוח. Branch: hotfix/payments-env-fix. CI started.", typingMs: 1800 },
-          { from: "maya",  channel: "general",   text: "כמה זמן ה-CI לוקח??? יש לנו 4 דקות!!!", typingMs: 1500 },
-          { from: "aviv",  channel: "general",   text: "ה-pipeline ב-payments בממוצע 3:42. השבוע ראיתי 4:11 בגלל cache misses.", typingMs: 1800 },
-          { from: "inbar", channel: "general",   text: "test_payment_idempotency נפל. כנראה flaky test - לא קשור לתיקון שלנו.", typingMs: 2000 },
-          { from: "aviv",  channel: "general",   text: "זה אכן flaky. הticket פתוח כבר שבועיים: DEV-184.", typingMs: 1700 },
+          { from: "inbar", channel: "general",   text: "PR פתוח. CI started.", typingMs: 1500 },
+          { from: "maya",  channel: "general",   text: "כמה זמן ה-CI לוקח??? יש לנו 4 דקות!!!", typingMs: 1400 },
+          { from: "inbar", channel: "general",   text: "test_payment_idempotency נפל. flaky test - DEV-184. לא קשור.", typingMs: 1900 },
           { from: "segev", channel: "general",   text: "🤞", typingMs: 600, isEmoji: true }
         ],
         mentor_inbar: [
@@ -596,16 +590,9 @@ const EPISODE_1 = {
           { from: "inbar",  channel: "dm_inbar",  text: "🟢 200 OK", typingMs: 800 }
         ],
         no_review: [
-          { from: "inbar", channel: "dm_inbar",  text: "🟢 200 OK", typingMs: 800 },
-          { from: "maya",  channel: "dm_maya",   text: "איזה אקשן. אני לא יודעת אם להתפעל או להתעצבן.", typingMs: 1500 },
-          { from: "inbar", channel: "dm_inbar",  text: "לא בדקתי קונפיגורציה לטסטים. אני לא יודעת אם פגעתי ב-CI pipeline.", typingMs: 2000 },
-          { from: "segev", channel: "general",   text: "💀", typingMs: 600, isEmoji: true },
-          { from: "bingo", channel: "bingo",     text: "ווף ווף ווף", typingMs: 700 },
-          { from: "aviv",  channel: "general",   text: "אגב, אני רואה ב-Datadog משהו מוזר. ה-error rate של checkout עלה ב-340%.", typingMs: 2200 },
-          { from: "inbar", channel: "dm_inbar",  text: "אוי לא. זה לא יכול להיות אני. אני לא נגעתי ב-checkout.", typingMs: 1800 },
-          { from: "aviv",  channel: "general",   text: "כן, זה אתה. הconfig change השפיע על service אחר דרך shared module. עמוד 31 ב-runbook.", typingMs: 2400 },
-          { from: "segev", channel: "general",   text: "💀💀💀", typingMs: 600, isEmoji: true },
-          { from: "bingo", channel: "bingo",     text: "🦴🦴", typingMs: 600, isEmoji: true }
+          { from: "inbar", channel: "dm_inbar", text: "🟢 200 OK. אבל לא בדקתי שום דבר אחר.", typingMs: 1500 },
+          { from: "aviv",  channel: "general",  text: "Datadog: error rate של checkout עלה ב-340%. shared module.", typingMs: 2000 },
+          { from: "segev", channel: "general",  text: "💀💀💀", typingMs: 600, isEmoji: true }
         ]
       },
       autoNext: "beat_11_dispatch"

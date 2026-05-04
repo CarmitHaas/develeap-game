@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/slack.css?v=4ze">
+<link rel="stylesheet" href="css/slack.css?v=4zf">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -122,6 +122,10 @@
            onerror="this.parentElement.textContent='Develeap';">
     </div>
     <div id="header-search">🔍 Search Develeap</div>
+    <button id="fast-mode-chip" onclick="toggleFastMode()" title="Speed up message ticks for re-runs">
+      <span class="fmc-icon">🚀</span>
+      <span class="fmc-label">Fast mode</span>
+    </button>
     <div id="header-user">
       <div class="header-user-avatar">★</div>
       <span>you</span>
@@ -283,17 +287,17 @@
 <button id="reopen-end-pill" onclick="reopenEndScreen()" style="display:none">חזרה לתוצאה →</button>
 
 <!-- Data files -->
-<script src="characters.js?v=4ze"></script>
-<script src="episodes/episode-1.js?v=4ze"></script>
+<script src="characters.js?v=4zf"></script>
+<script src="episodes/episode-1.js?v=4zf"></script>
 
 <!-- Engine modules (order matters: state → audio → channels → ui → engine → easter-eggs → reveal) -->
-<script src="js/state.js?v=4ze"></script>
-<script src="js/audio.js?v=4ze"></script>
-<script src="js/channels.js?v=4ze"></script>
-<script src="js/ui.js?v=4ze"></script>
-<script src="js/engine.js?v=4ze"></script>
-<script src="js/easter-eggs.js?v=4ze"></script>
-<script src="js/reveal.js?v=4ze"></script>
+<script src="js/state.js?v=4zf"></script>
+<script src="js/audio.js?v=4zf"></script>
+<script src="js/channels.js?v=4zf"></script>
+<script src="js/ui.js?v=4zf"></script>
+<script src="js/engine.js?v=4zf"></script>
+<script src="js/easter-eggs.js?v=4zf"></script>
+<script src="js/reveal.js?v=4zf"></script>
 
 <script>
 "use strict";
@@ -334,6 +338,18 @@ function minimizeSlack() {
   if (!w) return;
   w.classList.add('minimized');
   setTimeout(() => w.classList.remove('minimized'), 1800);
+}
+
+// Fast-mode toggle (visual chip in header)
+function toggleFastMode() {
+  if (typeof setFastMode === 'function') setFastMode(!isFastMode());
+}
+function renderFastModeChip(on) {
+  const chip = document.getElementById('fast-mode-chip');
+  if (!chip) return;
+  chip.classList.toggle('on', !!on);
+  const label = chip.querySelector('.fmc-label');
+  if (label) label.textContent = on ? 'Fast mode ON' : 'Fast mode';
 }
 
 // Mobile channels drawer

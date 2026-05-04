@@ -452,12 +452,40 @@ button { font-family: inherit; cursor: pointer; }
   gap: 6px;
 }
 #header-user {
-  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 13px;
   color: rgba(255,255,255,0.85);
+}
+/* Fast-mode toggle chip in the header */
+#fast-mode-chip {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.75);
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 14px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+#fast-mode-chip:hover { background: rgba(255,255,255,0.15); color: #fff; }
+#fast-mode-chip.on {
+  background: linear-gradient(135deg, #2eb67d 0%, #1eaa6f 100%);
+  color: #fff;
+  border-color: #1eaa6f;
+}
+#fast-mode-chip .fmc-icon { font-size: 13px; line-height: 1; }
+@media (max-width: 600px) {
+  #fast-mode-chip { padding: 4px 8px; }
+  #fast-mode-chip .fmc-label { display: none; }
 }
 .header-user-avatar {
   width: 24px;

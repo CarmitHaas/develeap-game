@@ -37,6 +37,16 @@ function pump() {
   queue.shift()(() => { busy = false; pump(); });
 }
 
+// Fast-mode multiplier: 1.0 = normal pace, 0.4 = 60% faster.
+// Toggled by setFastMode() (manual) and auto-enabled on second visit (see init below).
+let SPEED = 1.0;
+function setFastMode(on) {
+  SPEED = on ? 0.4 : 1.0;
+  try { localStorage.setItem('develeap_game_fast_mode', on ? '1' : '0'); } catch (e) {}
+  if (typeof renderFastModeChip === 'function') renderFastModeChip(on);
+}
+function isFastMode() { return SPEED < 1.0; }
+
 function qMsg(charId, text, typingMs, pauseMs, isEmoji, channel) {
   enq((done) => {
     const c = CHARACTERS[charId];
@@ -47,8 +57,8 @@ function qMsg(charId, text, typingMs, pauseMs, isEmoji, channel) {
     const targetCh = channel || (typeof getActiveChannel === 'function' ? getActiveChannel() : null);
     const isForActive = (typeof getActiveChannel === 'function') && targetCh === getActiveChannel();
     if (isForActive) showTyping(c.name);
-    const actualTyping = Math.max(typingMs || 1200, 1400);
-    const actualPause  = Math.max(pauseMs  || 250,  600);
+    const actualTyping = Math.max(typingMs || 1200, 1400) * SPEED;
+    const actualPause  = Math.max(pauseMs  || 250,  600) * SPEED;
     setTimeout(() => {
       if (isForActive) hideTyping();
       addMsg({ charId, text, isEmoji: !!isEmoji, channel: targetCh, isPlayer: charId === 'player' });
@@ -72,7 +82,7 @@ function qNotify(text, delayMs) {
 }
 
 function qWait(ms) {
-  enq((done) => setTimeout(done, ms));
+  enq((done) => setTimeout(done, ms * SPEED));
 }
 
 function qChoicePrompt(choices) {
@@ -221,6 +231,19 @@ function runBeat(beatId) {
 // ── Episode loader ────────────────────────────────────────────────
 function loadEpisode(episode) {
   currentEpisode = episode;
+
+  // Auto-enable fast-mode on re-runs (player has completed the game before)
+  // or when the user previously toggled it on. First-time players play at full pace.
+  try {
+    const stored = localStorage.getItem('develeap_game_fast_mode');
+    const everCompleted = !!localStorage.getItem('develeap_game_v1');
+    if (stored === '1' || (stored === null && everCompleted)) {
+      SPEED = 0.4;
+    } else {
+      SPEED = 1.0;
+    }
+    if (typeof renderFastModeChip === 'function') renderFastModeChip(SPEED < 1.0);
+  } catch (e) { SPEED = 1.0; }
 
   // Build starting scores: blend carried history with episode defaults
   scores = {};
