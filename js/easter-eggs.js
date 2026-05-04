@@ -87,7 +87,7 @@ const MOMENTS_OF_MAGIC = [
     color: "#5b6ad6",
     avatar: "L",
     when: "Thu · 7:10 PM",
-    text: "🌟 רותם נגד החוקים: היא הפנתה את ה-CTO לבעיה שהוא היה הכי טוב לפתור, במקום לנסות לבד. גם זה ניהול. זה לא חולשה - זה כיבוד ההיררכיה ההפוכה: לתת לאנשים את העבודה שהם הכי טובים בה.",
+    text: "🌟 רותם נגד החוקים: היא הפנתה את ה-CTO לבעיה שהוא ידע לתת לה את המענה הנכון, במקום לנסות לבד. גם זה ניהול. זה לא חולשה - זה לכבד את ההיררכיה ההפוכה: לתת לאנשים לעשות את מה שהם הכי טובים בו.",
     reactions: [
       { emoji: "💯", count: 11 },
       { emoji: "🌟", count: 6 }
@@ -408,7 +408,7 @@ const RANDOM_MEMES = [
     color: "#a04bb1",
     avatar: "N",
     when: "Today · 11:32 AM",
-    text: "<img src=\"meme-this-is-fine.png\" alt=\"This is fine dog at 17:57\" class=\"msg-image\">",
+    text: "every push without review, a senior dies inside. live footage:<br><img src=\"meme-this-is-fine.png\" alt=\"This is fine dog at 17:57\" class=\"msg-image\">",
     reactions: [
       { emoji: "🔥", count: 22 },
       { emoji: "😭", count: 14 },
