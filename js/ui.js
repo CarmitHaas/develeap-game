@@ -432,8 +432,9 @@ function showEnd(endingData, activeChars, scores, endingKey) {
   }
   const ctaAside = document.getElementById('end-cta-aside');
   if (ctaAside && typeof renderEndCTA === 'function') {
-    ctaAside.innerHTML = renderEndCTA(endingKey, !!endingData.revealsCode);
-    ctaAside.style.display = 'flex';
+    const ctaHtml = renderEndCTA(endingKey, !!endingData.revealsCode);
+    ctaAside.innerHTML = ctaHtml;
+    ctaAside.style.display = ctaHtml ? 'flex' : 'none';
   }
 
   document.getElementById('end-screen').classList.add('on');

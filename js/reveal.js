@@ -1,5 +1,20 @@
 "use strict";
 
+// ─── PUBLIC-MODE DETECTION ────────────────────────────────────────
+// github.io       → PUBLIC_MODE = true   (showcase only; no code, no form)
+// develeap.com    → PUBLIC_MODE = false  (full internal experience with prize)
+// localhost / etc → PUBLIC_MODE = false  (default to full for dev)
+// ?public=1       → forces public mode (testing override)
+// ?public=0       → forces full mode (testing override)
+const PUBLIC_MODE = (() => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('public') === '1') return true;
+    if (params.get('public') === '0') return false;
+    return window.location.hostname.includes('github.io');
+  } catch (e) { return false; }
+})();
+
 // ─── REVEAL + SUBMIT ──────────────────────────────────────────────
 // On the true ending: shows the winning code + submit-to-form button.
 // On every other ending: shows just the submit button (player can share which
@@ -73,6 +88,7 @@ function copyCodeToClipboard() {
 //   - any other ending: shows just a submit button (player shares which ending
 //     they reached + optional notes via the form)
 function renderReveal(endingKey, revealsCode) {
+  if (PUBLIC_MODE) return '';
   const formReady = !FORM_PREFILL_URL_TEMPLATE.includes('REPLACE_FORM_ID');
   const formUrl   = getFormUrl(endingKey, !!revealsCode);
 
@@ -113,6 +129,7 @@ function renderReveal(endingKey, revealsCode) {
 // True ending: shows the code chip too. Other endings: just a "share which
 // ending you reached" submit button.
 function renderEndCTA(endingKey, revealsCode) {
+  if (PUBLIC_MODE) return '';
   const formReady = !FORM_PREFILL_URL_TEMPLATE.includes('REPLACE_FORM_ID');
   const formUrl   = getFormUrl(endingKey, !!revealsCode);
 
